@@ -16,15 +16,15 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <title>Komushai-Shop</title>
+    <title>Eden-Shop</title>
     <!-- Logo -->
     <link rel="icon" type="image/icon" href="asset/Logo.png">
 </head>
 <body>
     <!-- Nav -->
     <nav class="navbar">
-        <img src="asset/Logo.png" alt="" >
-        <a href="" class="navbar-logo"><span>Sabitah</span>Shop.</a>
+        <img src="asset/Logo.png" alt="" class="logo">
+        <a href="" class="navbar-logo"><span>Eden</span>Shop.</a>
 
         <div class="navbar-nav">
             <a href="#">Home</a>
@@ -34,29 +34,59 @@
         </div>
 
         <div class="navbar-extra">
-            <a href="#"id="search-button"><i data-feather="search"></i></a>
-            <a href="#"id="shopping-cart"><i data-feather="shopping-cart"></i></a>
-            <a href="#"id="hambuger-menu"><i data-feather="menu"></i></a>
+            <a href="#"id="search-button"><img src="asset/search.svg" alt=""></a>
+            <a href="#"id="shopping-cart"><img src="asset/shopping-cart.svg" alt=""></a>
+            <a href="#"id="hambuger-menu"><img src="asset/menu.svg" alt=""></a>
+            <a href="#" id="user"><img src="asset/user.svg" alt="" ></a>
         </div>
 
 
         <div class="search-form">
          <input type="search" id="search-box" placeholder="Search">
-         <label for="search-box"><i data-feather="search"></i></label>
+         <label for="search-box"><img src="asset/search.svg" alt=""></i></label>
       </div>
+      
+    <div class="shopping-cart">
+      <div class="cart-item">
+        <img src="asset/manga9.jpg" alt="">
+        <div class="item-detail">
+          <h4>Skip to Loafer</h4>
+          <div class="item-price"><p>IDR 99.900</div>
+        </div>
+        <img src="asset/trash.svg" alt="" class="del-item">
+      </div>
+    </div>
+
+<!-- LOGIN -->
+    <div class="user-login hide" id="user-login">
+      <span><img src="asset/x.svg" alt="" id="exit" ></span>
+      <div class="login">
+        <h1 style="text-align: center; padding:4rem 0rem;">Login</h1>
+        <form action="" style="align-items: center;">
+          <label for="email">Email/Username</label><br>
+          <input type="text" id="email" name="email"><br>
+          <label for="email">Password</label><br>
+          <input type="password" id="Password" name="Password" ><br>
+          <input type="button" value="Login" id="login-btn">
+        </form>
+        <a href="">Forgot Password</a>
+        <a href="">Create Account</a>
+      </div>
+    </div>
+    <!-- LOGIN -->
 
     </nav>
     <!-- nav end-->
 
 
 <!-- hero -->
-<s class="hero" id="home">
+<section class="hero" id="home">
     <main class="content">
-        <h1><Span>Sabitah</Span>-Shop</h1>
-        <p>Aman dari Anak Bini.</p>
-        <a href="#" class="cta"><span>Buy Now</span></a>
+        <h1><Span>Eden</Span>-Shop</h1>
+        <p>A Paradise Only for YOU!</p>
+        <a href="#af" class="cta"><span>Buy Now</span></a>
     </main>
-</s>
+</section>
 <!-- hero end -->
 
 
@@ -472,7 +502,7 @@
             <img src="asset/manga2.jpg" alt="">
          </div>
          <div class="judul">
-            <a href="#">Isshou Suki tte Yutta jan</a>
+            <a href="#">Spotlight</a>
          </div>
          <div class="harga">IDK 99.900
          </div>
@@ -485,7 +515,7 @@
             <img src="asset/manga3.jpg" alt="">
          </div>
          <div class="judul">
-            <a href="#">BOku no Hero Academia</a>
+            <a href="#">Boku no Hero Academia</a>
          </div>
          <div class="harga">IDK 99.900
          </div>
@@ -605,7 +635,7 @@
          </ul>
       </div>
          <div class="contact__location">
-            <h4>Visit Shabita</h4>
+            <h4>Visit Eden</h4>
             <ul>
                <li><a href="#">Jl. Dr. KRT Radjiman Widyodiningrat <br> Jl. Kp. Pulo Jahe, <br>
                   Jatinegara, Kec. Cakung, Kota Jakarta Timur,<br>
@@ -619,24 +649,22 @@
                   <li><img src="asset/mandiri.png" alt="Mandiri Logo"></li>
                   <li><img src="asset/bni.png" alt="BNI Logo" style="margin-top: 13px;"></li>
                   <li><img src="asset/qris.svg" alt="QRIS Logo"></li>
-                  <li><img src="asset/paypal.png" alt="Paypal Logo"></li>
                </ul>
             </div>
          </div>
          <div class="contact__sosmed">
-            <h4>Interact with Kyou</h4>
+            <h4>Interact with Eden</h4>
             <ul>
                <a href=""><li data-feather="facebook"></li></a>
                <a href=""><li data-feather="instagram"></li></a>
                <a href=""><li data-feather="twitter"></li></a>
                <a href=""><li data-feather="phone">0859 5930 2131</li></a>
-               <a href=""><li data-feather="mail">e-support@kyou.id</li></a>
+               <a href=""><li data-feather="mail">e-support@Eden.id</li></a>
             </ul>
          </div>
       </div>
       <div class="copyright">
-         <img src="asset/Logo.png" alt="" style="width: 40px; float:left;">
-      <span class="tagline" style="float: left;">Ayo cintai hobimu bareng Shabita!</span>
+      <span class="tagline" style="float: left;">Ayo cintai hobimu bareng Eden!</span>
       <span class="copy" style="float: right;">© 2023 Andika Syarrell Irawan / PT. Jaya Makmur</span>
       </div>
 </footer>
