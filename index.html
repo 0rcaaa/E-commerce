@@ -480,127 +480,25 @@
 
 <!--manga -->
 
-<section class="manga" id="manga">
+<section class="manga" id="manga" x-data="manga">
    <h2>Manga</h2>
    
    <div class="row">
+    <template x-for="(item, index) in items" x-key="index">
       <div class="card">
          <div class="gambar">
-            <img src="asset/manga1.jpg" alt="">
+            <img :src="`asset/${item.sampul}`" :alt="item.name">
          </div>
          <div class="judul">
-            <a href="#">Jujutsu Kaisen</a>
+            <a x-text="item.judul"></a>
          </div>
-         <div class="harga">IDK 99.900
+         <div class="harga" x-text="duit(item.harga)">
          </div>
          <div>
             <a href="#" class="cta"><span>Buy Now</span></a>
          </div>
       </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga2.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Spotlight</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga3.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Boku no Hero Academia</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga4.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Horimya</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga5.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Goodnight Punpun</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga6.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">The Promised Neverland</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga7.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Sakamoto Days</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga8.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Chainsawman</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga9.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Skip to Loafer</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
+    </template>
    </div>
 </section>
 <!--manga -->
@@ -665,7 +563,7 @@
       </div>
       <div class="copyright">
       <span class="tagline" style="float: left;">Ayo cintai hobimu bareng Eden!</span>
-      <span class="copy" style="float: right;">© 2023 Andika Syarrell Irawan / PT. Jaya Makmur</span>
+      <span class="copy" style="float: right;">© 2023 0rca / PT. Jaya Makmur</span>
       </div>
 </footer>
 <!-- Footer -->
@@ -680,6 +578,10 @@
       <!-- SwiperJs -->
       <script src="js/swiper-bundle.min.js"></script>
       
+      <!-- Alpine -->
+      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>>
+      <script src="js/alpine-bundle.min.js"></script>
+
       <!-- js -->
       <script src="js/script.js"></script>
       
