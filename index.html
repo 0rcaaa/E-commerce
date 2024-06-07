@@ -22,7 +22,7 @@
 </head>
 <body>
     <!-- Nav -->
-    <nav class="navbar">
+    <nav class="navbar" x-data="manga">
         <img src="asset/Logo.png" alt="" class="logo">
         <a href="" class="navbar-logo"><span>Eden</span>Shop.</a>
 
@@ -35,7 +35,10 @@
 
         <div class="navbar-extra">
             <a href="#"id="search-button"><img src="asset/search.svg" alt=""></a>
-            <a href="#"id="shopping-cart"><img src="asset/shopping-cart.svg" alt=""></a>
+          <a href="#"id="shopping-cart">
+            <img src="asset/shopping-cart.svg" alt="">
+            <span class="quantity-notify" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+          </a>
             <a href="#"id="hambuger-menu"><img src="asset/menu.svg" alt=""></a>
             <a href="#" id="user"><img src="asset/user.svg" alt="" ></a>
         </div>
@@ -492,10 +495,10 @@
          <div class="judul">
             <a x-text="item.judul"></a>
          </div>
-         <div class="harga" x-text="duit(item.harga)">
+         <div class="harga" x-text="rupiah(item.harga)">
          </div>
          <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
+            <a href="#" class="cta" @click.prevent="$store.cart.add(manga)"><span>Buy Now</span></a>
          </div>
       </div>
     </template>
