@@ -102,7 +102,7 @@ window.onresize = function(event) {
 
 
 /*=============== SWIPER JS ===============*/
-var swiper = new Swiper(".slide-container", {
+let swiper = new Swiper(".slide-container", {
   slidesPerView: 4,
   spaceBetween: 20,
   sliderPerGroup: 4,
