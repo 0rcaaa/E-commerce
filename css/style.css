@@ -139,6 +139,18 @@ body{
   color: #010101;
 }
 
+.quantity-notify{
+  color: var(--bg);
+  background-color:var(--primary);
+  padding: 0px 5px;
+  margin:0;
+  border-radius:5px;
+  display:inline-block;
+  margin-left:-1.5rem;
+  position:absolute;
+  font-size:0.9rem
+}
+
 .shopping-cart{
   position: absolute;
   top: 100%;

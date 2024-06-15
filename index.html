@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--=============== REMIXICONS ===============-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
     <!--=============== SWIPER CSS ===============-->
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
-
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&family=Poppins:ital,wght@0,300;0,400;0,700;1,100;1,300;1,400;1,700&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
-    <!-- Feather -->
-    <script src="https://unpkg.com/feather-icons"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <title>Eden-Shop</title>
@@ -22,7 +17,7 @@
 </head>
 <body>
     <!-- Nav -->
-    <nav class="navbar">
+    <nav class="navbar" x-data="manga">
         <img src="asset/Logo.png" alt="" class="logo">
         <a href="" class="navbar-logo"><span>Eden</span>Shop.</a>
 
@@ -35,7 +30,10 @@
 
         <div class="navbar-extra">
             <a href="#"id="search-button"><img src="asset/search.svg" alt=""></a>
-            <a href="#"id="shopping-cart"><img src="asset/shopping-cart.svg" alt=""></a>
+          <a href="#"id="shopping-cart">
+            <img src="asset/shopping-cart.svg" alt="">
+            <span class="quantity-notify" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+          </a>
             <a href="#"id="hambuger-menu"><img src="asset/menu.svg" alt=""></a>
             <a href="#" id="user"><img src="asset/user.svg" alt="" ></a>
         </div>
@@ -81,11 +79,13 @@
 
 <!-- hero -->
 <section class="hero" id="home">
-    <main class="content">
+   <main class="content">
         <h1><Span>Eden</Span>-Shop</h1>
         <p>A Paradise Only for YOU!</p>
         <a href="#af" class="cta"><span>Buy Now</span></a>
     </main>
+
+
 </section>
 <!-- hero end -->
 
@@ -126,6 +126,58 @@
   </div>
 </section>
 <!-- about end -->
+
+
+<div id="default-carousel" class="relative w-full" data-carousel="slide">
+  <!-- Carousel wrapper -->
+  <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+       <!-- Item 1 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      </div>
+      <!-- Item 2 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      </div>
+      <!-- Item 3 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      </div>
+      <!-- Item 4 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      </div>
+      <!-- Item 5 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      </div>
+  </div>
+  <!-- Slider indicators -->
+  <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+  </div>
+  <!-- Slider controls -->
+  <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+          </svg>
+          <span class="sr-only">Previous</span>
+      </span>
+  </button>
+  <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+          <span class="sr-only">Next</span>
+      </span>
+  </button>
+</div>
 
 
 
@@ -291,96 +343,6 @@
       <div class="swiper-button-prev swiper-navBtn"></div>
       <div class="swiper-pagination"></div>
     </div>
-    <!-- Modelkit -->
-    <div class="container swiper">
-       <h1 style="font-weight: bold; font-size:3rem; padding-left:2.5rem;">
-          Model Kit
-         </h1>
-         <div class="slide-container">
-        <div class="card-wrapper swiper-wrapper">
-          <div class="kartu swiper-slide">
-            <div class="image-box">
-               <img src="asset/gundam.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-               <div class="name-job">
-                <a href="#" class="name">MG1/100 "Freedom Gundam Tengan Kujaku"</a href="#">
-                  <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-         <div class="kartu swiper-slide">
-            <div class="image-box">
-               <img src="asset/gundam.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-               <div class="name-job">
-                <a href="#" class="name">MG1/100 "Freedom Gundam Tengan Kujaku"</a href="#">
-                <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-         <div class="kartu swiper-slide">
-            <div class="image-box">
-               <img src="asset/gundam.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-               <div class="name-job">
-                <a href="#" class="name">MG1/100 "Freedom Gundam Tengan Kujaku"</a href="#">
-                  <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-         <div class="kartu swiper-slide">
-            <div class="image-box">
-               <img src="asset/gundam.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-               <div class="name-job">
-                <a href="#" class="name">MG1/100 "Freedom Gundam Tengan Kujaku"</a href="#">
-                <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-          <div class="kartu swiper-slide">
-             <div class="image-box">
-              <img src="asset/gundam.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-               <div class="name-job">
-                <a href="#" class="name">MG1/100 "Freedom Gundam Tengan Kujaku"</a href="#">
-                  <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-         <div class="kartu swiper-slide">
-            <div class="image-box">
-               <img src="asset/gundam.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-               <div class="name-job">
-                <a href="#" class="name">MG1/100 "Freedom Gundam Tengan Kujaku"</a href="#">
-                  <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-         <div class="kartu swiper-slide">
-            <div class="image-box">
-               <img src="asset/gundam.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-               <div class="name-job">
-                <a href="#" class="name">MG1/100 "Freedom Gundam Tengan Kujaku"</a href="#">
-                  <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-      </div>
-      </div>
-      <div class="swiper-button-next swiper-navBtn"></div>
-      <div class="swiper-button-prev swiper-navBtn"></div>
-      <div class="swiper-pagination"></div>
-   </div>
    <!-- Merchand -->
    <div class="container swiper">
      <h1 style="font-weight: bold; font-size:3rem; padding-left:2.5rem;">
@@ -476,131 +438,27 @@
 <!-- Shop -->
 
 
-
-
 <!--manga -->
 
-<section class="manga" id="manga">
+<section class="manga" id="manga" x-data="manga">
    <h2>Manga</h2>
    
    <div class="row">
+    <template x-for="(item, index) in items" x-key="index">
       <div class="card">
          <div class="gambar">
-            <img src="asset/manga1.jpg" alt="">
+            <img :src="`asset/${item.sampul}`" :alt="item.name">
          </div>
          <div class="judul">
-            <a href="#">Jujutsu Kaisen</a>
+            <a x-text="item.judul"></a>
          </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga2.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Spotlight</a>
-         </div>
-         <div class="harga">IDK 99.900
+         <div class="harga" x-text="rupiah(item.harga)">
          </div>
          <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
+            <a href="#" class="cta" @click.prevent="$store.cart.add(manga)"><span>Buy Now</span></a>
          </div>
       </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga3.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Boku no Hero Academia</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga4.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Horimya</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga5.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Goodnight Punpun</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga6.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">The Promised Neverland</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga7.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Sakamoto Days</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga8.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Chainsawman</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
-      <div class="card">
-         <div class="gambar">
-            <img src="asset/manga9.jpg" alt="">
-         </div>
-         <div class="judul">
-            <a href="#">Skip to Loafer</a>
-         </div>
-         <div class="harga">IDK 99.900
-         </div>
-         <div>
-            <a href="#" class="cta"><span>Buy Now</span></a>
-         </div>
-      </div>
+    </template>
    </div>
 </section>
 <!--manga -->
@@ -665,21 +523,20 @@
       </div>
       <div class="copyright">
       <span class="tagline" style="float: left;">Ayo cintai hobimu bareng Eden!</span>
-      <span class="copy" style="float: right;">© 2023 Andika Syarrell Irawan / PT. Jaya Makmur</span>
+      <span class="copy" style="float: right;">© 2023 0rca / PT. Jaya Makmur</span>
       </div>
 </footer>
 <!-- Footer -->
 
 
 
-<!-- Feather -->
-<script>
-        feather.replace();
-      </script>
-
       <!-- SwiperJs -->
       <script src="js/swiper-bundle.min.js"></script>
       
+      <!-- Alpine -->
+      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>>
+      <script src="js/alpine-bundle.min.js"></script>
+
       <!-- js -->
       <script src="js/script.js"></script>
       
