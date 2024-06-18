@@ -90,13 +90,13 @@ body{
 
 
 /* icon */
-.navbar .navbar-extra img{
+.navbar .navbar-extra svg{
     color: #fff;
     margin: 0 0.5rem;
 }
 
-.navbar .navbar-extra img:hover{
-    color: var(--primary);
+.navbar .navbar-extra svg:hover{
+    stroke: var(--primary);
 }
 
 
@@ -174,8 +174,7 @@ body{
 }
 
 .shopping-cart h3{
-  font-size: 1.6rem;
-  padding-bottom: 0.5;
+  font-size: 1.4rem;
 }
 
 .shopping-cart .item-price{
@@ -189,7 +188,7 @@ body{
 }
 
 .shopping-cart img{
-  height: 5rem;
+  height: 4rem;
   border-radius: 10%;
   border: #010101 1px solid;
 }
@@ -197,9 +196,21 @@ body{
 .navbar .shopping-cart.aktif{
   right: 0;
 }
-
+.shopping-cart .cart-item #add,
+.shopping-cart .cart-item #remove{
+  display: inline-block;
+  padding: 2px 5px;
+  cursor:pointer;
+  margin:0 8px;
+  background: var(--bg);
+  color:white;
+  font-weight:bold;
+  font-size:1.1rem;
+}
 
 /* LOGIN */
+
+
 .user-login{
   position: absolute;
   display: inline-block;
@@ -212,7 +223,7 @@ body{
   display: none;
 }
 
-.user-login span{
+.x{
   color: #000000;
   cursor: pointer;
   position: absolute;
@@ -227,16 +238,22 @@ body{
   height: 30rem;
   font-size: 15px;
   color: #010101;
-  border-radius: 5px;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
 }
-
+.show{
+  display:inline;
+}
+.hide{
+  display:none;
+}
 .user-login .login form{
-  padding-left: 3rem;
+  margin:0 auto;
   width: 300px;
 }
 
 .user-login .login form input{
-  width: 268px;
+  width: 300px;
   height: 25px;
   border-radius: 5px;
   margin-bottom: 8px;
@@ -252,9 +269,13 @@ body{
   opacity: 0.8;
 }
 
+.lupa{
+  display:flex;
+  justify-content:space-between;
+  margin:0 6rem;
+}
+
 .user-login .login a{
-  display: inline;
-  margin-left: 3rem;
   color: #ffff;
   cursor: pointer;
   font-size: 14px;
@@ -366,7 +387,6 @@ body{
 }
 /* home */
 
-
 /* About */
 
 .about, .shop, .manga, footer{
@@ -441,6 +461,46 @@ body{
 .slider .dots li.active{
   width: 30px;
 }
+.seemore{
+  color:aliceblue;
+}
+.seemore:hover{
+  color:var(--primary)
+}
+.dasar{
+  background-color:rgb(30, 50, 72);
+  border-radius:8px;
+  box-shadow: -1px -1px 15px 3px #3c4a5f;
+  width: 100%;
+}
+.dasar .ds1{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.dasar .ds1 .isi{
+  margin:2rem 10px;
+  width:10rem;
+}
+.dasar .ds1 .isi img {
+  height: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  border-radius: 4px;
+}
+.dasar .ds1 .isi h1:hover{
+  text-decoration-line:underline;
+  color:var(--primary);
+  cursor:pointer;
+}
+.dasar .ds1 .isi .stok{
+  background-color:red;
+  width:3rem;
+  height:1rem;
+}
+.dasar .ds1 .isi p{
+  color:#a3a3a3;
+}
 /* About */
 
 
@@ -462,8 +522,8 @@ body{
   padding: 60px 0;
 }
 .slide-container {
-  margin: 0 30px;
-  overflow: hidden;
+  margin: 0 100px;
+
 }
 .kartu {
   background: rgb(30, 50, 72);
@@ -518,7 +578,7 @@ body{
 /* Manga */
 .manga .row{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 3fr));
   gap: 1.5rem;
   justify-content: center;
   margin-top: 4rem;
@@ -629,10 +689,12 @@ align-items: center;
     }
     
     .swiper-button-prev {
-      left: -1rem;
+      left: -1rem !important;
+      padding-top: 5rem !important;
     }
     .swiper-button-next {
-      right: -1rem;
+      right: -1rem !important;
+      margin-top: 0px !important;
     }
     footer .copyright span{
       float: none;
@@ -648,6 +710,7 @@ align-items: center;
   html {
         font-size: 62.5%;
       }
+      
       
       #hambuger-menu {
         display: inline-block;
@@ -732,6 +795,32 @@ align-items: center;
     .card__data {
       padding: 1rem;
     }
+  }
     
-    
+    @media (max-width:1090px ){
+      .slider {
+        width: 500px;
+        height: 283px;
+      }
+      .slider .list img{
+        height:auto;
+        width:500px;
+      }
+      .kartu .image-box{
+        height:200px
+      }
+      .dasar .ds1 .isi{
+        width:8rem
+      } 
+}
+@media (max-width:412px){
+  .slider {
+    width: 300px;
+        height: 170px;
+    }
+    .slider .list img {
+      width: 300px;
+      height: auto;
+  }
+  }
 }

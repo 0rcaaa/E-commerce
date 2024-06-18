@@ -17,48 +17,59 @@
 </head>
 <body>
     <!-- Nav -->
-    <nav class="navbar" x-data="manga">
+    <nav class="navbar" x-data='manga'>
         <img src="asset/Logo.png" alt="" class="logo">
         <a href="" class="navbar-logo"><span>Eden</span>Shop.</a>
 
         <div class="navbar-nav">
             <a href="#">Home</a>
             <a href="#about">Whats New?</a>
-            <a href="#af">Action Figure</a>
+            <a href="#af">Shop</a>
             <a href="#manga">Manga</a>
         </div>
 
         <div class="navbar-extra">
-            <a href="#"id="search-button"><img src="asset/search.svg" alt=""></a>
-          <a href="#"id="shopping-cart">
-            <img src="asset/shopping-cart.svg" alt="">
-            <span class="quantity-notify" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
-          </a>
-            <a href="#"id="hambuger-menu"><img src="asset/menu.svg" alt=""></a>
-            <a href="#" id="user"><img src="asset/user.svg" alt="" ></a>
+            <a href="#"id="search-button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </a>
+            <a href="#"id="shopping-cart">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <span class="quantity-notify" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span></a>
+            <a href="#" id="user"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+            <a href="#"id="hambuger-menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
         </div>
 
 
         <div class="search-form">
          <input type="search" id="search-box" placeholder="Search">
-         <label for="search-box"><img src="asset/search.svg" alt=""></i></label>
+         <label for="search-box">              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+         </i></label>
       </div>
       
     <div class="shopping-cart">
+      <template x-for="(item, index) in $store.cart.items" x-keys="index">
       <div class="cart-item">
-        <img src="asset/manga9.jpg" alt="">
+        <img :src="`asset/${item.img}`" :alt="item.name">
         <div class="item-detail">
-          <h4>Skip to Loafer</h4>
-          <div class="item-price"><p>IDR 99.900</div>
+          <h4 x-text="item.name"></h4>
+          <div class="item-price">
+            <span x-text="rupiah(item.price)"></span>&times;
+            <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+            <span x-text="item.quantity"></span>
+            <button id="add" @click="$store.cart.add(item)">&plus;</button>&equals;
+            <span x-text="rupiah(item.total)"></span>
+          </div>
         </div>
-        <img src="asset/trash.svg" alt="" class="del-item">
       </div>
+    </template>
+    <h1 x-show="!$store.cart.items.length">Kosong wak</h1>
+    <h1 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h1>
     </div>
 
 <!-- LOGIN -->
     <div class="user-login hide" id="user-login">
-      <span><img src="asset/x.svg" alt="" id="exit" ></span>
       <div class="login">
+        <span class="x"><img src="asset/x.svg" alt="" id="exit" ></span>
         <h1 style="text-align: center; padding:4rem 0rem;">Login</h1>
         <form action="" style="align-items: center;">
           <label for="email">Email/Username</label><br>
@@ -67,8 +78,10 @@
           <input type="password" id="Password" name="Password" ><br>
           <input type="button" value="Login" id="login-btn">
         </form>
+        <div class="lupa">
         <a href="">Forgot Password</a>
         <a href="">Create Account</a>
+      </div>
       </div>
     </div>
     <!-- LOGIN -->
@@ -93,7 +106,7 @@
 
 <!-- about -->
 <section class="about" id="about">
-    <h2>New</h2>    
+    <h2>New Series</h2>    
     <div class="slider">
       <div class="list">
           <div class="item">
@@ -127,69 +140,16 @@
 </section>
 <!-- about end -->
 
-
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
-  <!-- Carousel wrapper -->
-  <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-       <!-- Item 1 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-      <!-- Item 2 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-      <!-- Item 3 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-      <!-- Item 4 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-      <!-- Item 5 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-  </div>
-  <!-- Slider indicators -->
-  <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-      <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-  </div>
-  <!-- Slider controls -->
-  <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-          <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-          </svg>
-          <span class="sr-only">Previous</span>
-      </span>
-  </button>
-  <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-          <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-          </svg>
-          <span class="sr-only">Next</span>
-      </span>
-  </button>
-</div>
-
-
-
-
 <!-- shop -->
 <section class="shop" id="af">
     <h2>Shop</h2>
     <!-- Scale Figure -->
     <div class="container swiper">
-      <h1 style="font-weight: bold; font-size:3rem; padding-left:2.5rem;">
-         Scaled Figure
-      </h1>
+      <div style=" padding-left:2.5rem; margin: 3rem 0rem; justify-content: space-between;
+    align-items: center; display:flex; ">
+  <h1 style="font-weight: bold; font-size:3rem;">Most Liked</h1>
+  <a href="" class="seemore">See More-></a>
+</div>
       <div class="slide-container">
         <div class="card-wrapper swiper-wrapper">
           <div class="kartu swiper-slide">
@@ -264,198 +224,70 @@
       <div class="swiper-button-prev swiper-navBtn"></div>
       <div class="swiper-pagination"></div>
     </div>
-    <!-- Nendroid -->
-    <div class="container swiper">
-      <h1 style="font-weight: bold; font-size:3rem; padding-left:2.5rem;">
-         Nendoroid
-      </h1>
-      <div class="slide-container">
-        <div class="card-wrapper swiper-wrapper">
-          <div class="kartu swiper-slide">
-            <div class="image-box">
-              <img src="asset/miku.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-              <div class="name-job">
-                <a href="#" class="name">Nendroid Unyu Miku</a href="#">
-                <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-          <div class="kartu swiper-slide">
-            <div class="image-box">
-              <img src="asset/miku.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-              <div class="name-job">
-                <a href="#" class="name">Nendroid Unyu Miku</a href="#">
-                <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-          <div class="kartu swiper-slide">
-            <div class="image-box">
-              <img src="asset/miku.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-              <div class="name-job">
-                <a href="#" class="name">Nendroid Unyu Miku</a href="#">
-                <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-          <div class="kartu swiper-slide">
-            <div class="image-box">
-              <img src="asset/miku.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-              <div class="name-job">
-                <a href="#" class="name">Nendroid Unyu Miku</a href="#">
-                <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-          <div class="kartu swiper-slide">
-            <div class="image-box">
-              <img src="asset/miku.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-              <div class="name-job">
-                <a href="#" class="name">Nendroid Unyu Miku</a href="#">
-                <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-          <div class="kartu swiper-slide">
-            <div class="image-box">
-              <img src="asset/miku.jpg" alt="" />
-            </div>
-            <div class="profile-details">
-              <div class="name-job">
-                <a href="#" class="name">Nendroid Unyu Miku</a href="#">
-                <h4 class="job">IDR 999.999,00</h4>
-              </div>
-            </div>
-         </div>
-        </div>
-      </div>
-      <div class="swiper-button-next swiper-navBtn"></div>
-      <div class="swiper-button-prev swiper-navBtn"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-   <!-- Merchand -->
-   <div class="container swiper">
-     <h1 style="font-weight: bold; font-size:3rem; padding-left:2.5rem;">
-       Merchand
-     </h1>
-     <div class="slide-container">
-       <div class="card-wrapper swiper-wrapper">
-         <div class="kartu swiper-slide">
-           <div class="image-box">
-             <img src="asset/staf.jpg" alt="" />
-           </div>
-           <div class="profile-details">
-             <div class="name-job">
-               <a href="#" class="name">Puella Magi Madoka Magica the Movie: Earphone Jack Accessories</a href="#">
-               <h4 class="job">IDR 999.999,00</h4>
-             </div>
-           </div>
-        </div>
-         <div class="kartu swiper-slide">
-           <div class="image-box">
-             <img src="asset/staf.jpg" alt="" />
-           </div>
-           <div class="profile-details">
-             <div class="name-job">
-               <a href="#" class="name">Puella Magi Madoka Magica the Movie: Earphone Jack Accessories</a href="#">
-               <h4 class="job">IDR 999.999,00</h4>
-             </div>
-           </div>
-        </div>
-         <div class="kartu swiper-slide">
-           <div class="image-box">
-             <img src="asset/staf.jpg" alt="" />
-           </div>
-           <div class="profile-details">
-             <div class="name-job">
-               <a href="#" class="name">Puella Magi Madoka Magica the Movie: Earphone Jack Accessories</a href="#">
-               <h4 class="job">IDR 999.999,00</h4>
-             </div>
-           </div>
-        </div>
-         <div class="kartu swiper-slide">
-           <div class="image-box">
-             <img src="asset/staf.jpg" alt="" />
-           </div>
-           <div class="profile-details">
-             <div class="name-job">
-               <a href="#" class="name">Puella Magi Madoka Magica the Movie: Earphone Jack Accessories</a href="#">
-               <h4 class="job">IDR 999.999,00</h4>
-             </div>
-           </div>
-        </div>
-         <div class="kartu swiper-slide">
-           <div class="image-box">
-             <img src="asset/staf.jpg" alt="" />
-           </div>
-           <div class="profile-details">
-             <div class="name-job">
-               <a href="#" class="name">Puella Magi Madoka Magica the Movie: Earphone Jack Accessories</a href="#">
-               <h4 class="job">IDR 999.999,00</h4>
-             </div>
-           </div>
-        </div>
-         <div class="kartu swiper-slide">
-           <div class="image-box">
-             <img src="asset/staf.jpg" alt="" />
-           </div>
-           <div class="profile-details">
-             <div class="name-job">
-               <a href="#" class="name">Puella Magi Madoka Magica the Movie: Earphone Jack Accessories</a href="#">
-               <h4 class="job">IDR 999.999,00</h4>
-             </div>
-           </div>
-        </div>
-         <div class="kartu swiper-slide">
-           <div class="image-box">
-             <img src="asset/staf.jpg" alt="" />
-           </div>
-           <div class="profile-details">
-             <div class="name-job">
-               <a href="#" class="name">Puella Magi Madoka Magica the Movie: Earphone Jack Accessories</a href="#">
-               <h4 class="job">IDR 999.999,00</h4>
-             </div>
-           </div>
-        </div>
-       </div>
-     </div>
-     <div class="swiper-button-next swiper-navBtn"></div>
-     <div class="swiper-button-prev swiper-navBtn"></div>
-     <div class="swiper-pagination"></div>
-   </div>
+
     
-</section>
+<div style=" padding-left:2.5rem; margin: 3rem 0rem; justify-content: space-between;
+    align-items: center; display:flex; ">
+  <h1 style="font-weight: bold; font-size:3rem;">Pre-Order</h1>
+  <a href="" class="seemore">See More-></a>
+</div>
+
+<div class="dasar">
+  <div class="ds1">
+    <div class="isi">
+    <img src="./asset/miku.jpg" alt="">
+    <h1>Miku Dayo</h1>
+    <p>Rp. 900.000</p>
+  </div>
+  <div class="isi">
+    <img src="./asset/miku.jpg" alt="">
+    <h1>Miku Dayo</h1>
+    <p>Rp. 900.000</p>
+  </div>
+  <div class="isi">
+    <img src="./asset/miku.jpg" alt="">
+    <h1>Miku Dayo</h1>
+    <p>Rp. 900.000</p>
+  </div>
+  <div class="isi">
+    <img src="./asset/miku.jpg" alt="">
+    <h1>Miku Dayo</h1>
+    <p>Rp. 900.000</p>
+  </div>
+  <div class="isi">
+    <img src="./asset/miku.jpg" alt="">
+    <h1>Miku Dayo</h1>
+    <p>Rp. 900.000</p>
+  </div>
+  <div class="isi">
+    <img src="./asset/miku.jpg" alt="">
+    <h1>Miku Dayo</h1>
+    <p>Rp. 900.000</p>
+  </div>
+  </div> 
+</div>
+
+  </section>
 <!-- Shop -->
 
 
 <!--manga -->
-
 <section class="manga" id="manga" x-data="manga">
-   <h2>Manga</h2>
+   <h2>Newest Items</h2>
    
    <div class="row">
     <template x-for="(item, index) in items" x-key="index">
       <div class="card">
          <div class="gambar">
-            <img :src="`asset/${item.sampul}`" :alt="item.name">
+            <img :src="`./asset/${item.img}`" :alt="item.name">
          </div>
-         <div class="judul">
-            <a x-text="item.judul"></a>
+         <div class="name">
+            <a x-text="item.name"></a>
          </div>
-         <div class="harga" x-text="rupiah(item.harga)">
+         <div class="price" x-text="rupiah(item.price)">
          </div>
          <div>
-            <a href="#" class="cta" @click.prevent="$store.cart.add(manga)"><span>Buy Now</span></a>
+            <a href="#" class="cta" @click.prevent="$store.cart.add(item)"><span>Buy Now</span></a>
          </div>
       </div>
     </template>
@@ -535,7 +367,7 @@
       
       <!-- Alpine -->
       <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>>
-      <script src="js/alpine-bundle.min.js"></script>
+      <script src="js/alpine.js"></script>
 
       <!-- js -->
       <script src="js/script.js"></script>

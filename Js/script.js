@@ -9,13 +9,13 @@ const sb = document.querySelector('#search-button')
 const sp = document.querySelector('#shopping-cart')
 
 document.addEventListener('click', function (e) {
-    if(!hambuger.contains(e.target)&&!navbarNav.contains(e.target)){
+    if(hambuger.contains(e.target)&&navbarNav.contains(e.target)){
         navbarNav.classList.remove('aktif');
     }
-    if(!sb.contains(e.target)&&!searchForm.contains(e.target)){
+    if(sb.contains(e.target)&&searchForm.contains(e.target)){
        searchForm.classList.remove('aktif');
     }
-    if(!sp.contains(e.target)&&!spForm.contains(e.target)){
+    if(sp.contains(e.target)&&spForm.contains(e.target)){
       spForm.classList.remove('aktif');
     }
 });
@@ -109,7 +109,12 @@ let swiper = new Swiper(".slide-container", {
   loop: true,
   centerSlide: "true",
   fade: "true",
-  grabCursor: "true",
+
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+    },
+
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -135,3 +140,20 @@ let swiper = new Swiper(".slide-container", {
     },
   },
 });
+
+// let home = document.getElementById('home')
+// let navbar = document.querySelector('.navbar');
+
+// window.addEventListener('scroll', () => {
+//   let scrollTop = window.scrollY;
+//   console.log(scrollTop)
+
+//   if(scrollTop >= home.offsetTop) {
+//     console.log('udh di bawah banh')
+//     navbar.classList.add("hide");
+//   } 
+//   if(scrollTop <= home.offsetTop) {
+//     console.log('ini di atas')
+//     navbar.classList.remove("hide");
+//   }
+// })
