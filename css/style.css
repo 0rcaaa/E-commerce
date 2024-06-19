@@ -591,7 +591,6 @@ body{
   border: 1px solid #666;
   border-radius: 6px;
   padding: 2rem;
-  margin: auto;
 }
 
 .manga .row .card .judul a{
@@ -599,10 +598,6 @@ body{
 }
 .manga .row .card .judul a:hover{
   opacity: 0.5;
-}
-
-.manga .row .card .gambar{
-  padding: 1rem 0;
 }
 
 .manga .row .card .gambar img{
