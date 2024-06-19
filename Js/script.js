@@ -1,7 +1,8 @@
 // Tombol ham
 const navbarNav = document.querySelector('.navbar-nav');
 // onclick
-document.querySelector('#hambuger-menu').onclick = ( ) =>{navbarNav.classList.toggle('aktif');
+document.querySelector('#hambuger-menu').onclick = () => {
+  navbarNav.classList.toggle('aktif');
 };
 // deactive
 const hambuger = document.querySelector('#hambuger-menu');
@@ -9,15 +10,15 @@ const sb = document.querySelector('#search-button')
 const sp = document.querySelector('#shopping-cart')
 
 document.addEventListener('click', function (e) {
-    if(hambuger.contains(e.target)&&navbarNav.contains(e.target)){
-        navbarNav.classList.remove('aktif');
-    }
-    if(sb.contains(e.target)&&searchForm.contains(e.target)){
-       searchForm.classList.remove('aktif');
-    }
-    if(sp.contains(e.target)&&spForm.contains(e.target)){
-      spForm.classList.remove('aktif');
-    }
+  if (!hambuger.contains(e.target) && !navbarNav.contains(e.target)) {
+    navbarNav.classList.remove('aktif');
+  }
+  if (!sb.contains(e.target) && !searchForm.contains(e.target)) {
+    searchForm.classList.remove('aktif');
+  }
+  if (!sp.contains(e.target) && !spForm.contains(e.target)) {
+    spForm.classList.remove('aktif');
+  }
 });
 
 
@@ -30,6 +31,14 @@ document.getElementById('user').addEventListener('click', () => {
 document.getElementById('exit').addEventListener('click', () => {
   document.getElementById('user-login').classList.add('hide')
 })
+
+// document.getElementById('cta').addEventListener('click', () => {
+//   document.getElementById('modul-buy').classList.remove('hide')
+// })
+
+// document.getElementById('exit2').addEventListener('click', () => {
+//   document.getElementById('modul-buy').classList.add('hide')
+// })
 
 // LOGIN
 
@@ -66,36 +75,36 @@ let dots = document.querySelectorAll('.slider .dots li');
 
 let lengthItems = items.length - 1;
 let active = 0;
-next.onclick = function(){
-    active = active + 1 <= lengthItems ? active + 1 : 0;
-    reloadSlider();
+next.click = function () {
+  active = active + 1 <= lengthItems ? active + 1 : 0;
+  reloadSlider();
 }
-prev.onclick = function(){
-    active = active - 1 >= 0 ? active - 1 : lengthItems;
-    reloadSlider();
+prev.click = function () {
+  active = active - 1 >= 0 ? active - 1 : lengthItems;
+  reloadSlider();
 }
-let refreshInterval = setInterval(()=> {next.click()}, 5000);
-function reloadSlider(){
-    slider.style.left = -items[active].offsetLeft + 'px';
-    // 
-    let last_active_dot = document.querySelector('.slider .dots li.active');
-    last_active_dot.classList.remove('active');
-    dots[active].classList.add('active');
+let refreshInterval = setInterval(() => { next.click() }, 5000);
+function reloadSlider() {
+  slider.style.left = -items[active].offsetLeft + 'px';
+  // 
+  let last_active_dot = document.querySelector('.slider .dots li.active');
+  last_active_dot.classList.remove('active');
+  dots[active].classList.add('active');
 
-    clearInterval(refreshInterval);
-    refreshInterval = setInterval(()=> {next.click()}, 5000);
+  clearInterval(refreshInterval);
+  refreshInterval = setInterval(() => { next.click() }, 5000);
 
-    
+
 }
 
 dots.forEach((li, key) => {
-    li.addEventListener('click', ()=>{
-         active = key;
-         reloadSlider();
-    })
-})
-window.onresize = function(event) {
+  li.addEventListener('click', () => {
+    active = key;
     reloadSlider();
+  })
+})
+window.onresize = function (event) {
+  reloadSlider();
 };
 
 
@@ -104,6 +113,7 @@ window.onresize = function(event) {
 /*=============== SWIPER JS ===============*/
 let swiper = new Swiper(".slide-container", {
   slidesPerView: 4,
+  
   spaceBetween: 20,
   sliderPerGroup: 4,
   loop: true,
@@ -113,7 +123,7 @@ let swiper = new Swiper(".slide-container", {
   autoplay: {
     delay: 2500,
     disableOnInteraction: false,
-    },
+  },
 
   pagination: {
     el: ".swiper-pagination",
@@ -151,7 +161,7 @@ let swiper = new Swiper(".slide-container", {
 //   if(scrollTop >= home.offsetTop) {
 //     console.log('udh di bawah banh')
 //     navbar.classList.add("hide");
-//   } 
+//   }
 //   if(scrollTop <= home.offsetTop) {
 //     console.log('ini di atas')
 //     navbar.classList.remove("hide");

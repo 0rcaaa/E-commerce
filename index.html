@@ -42,7 +42,7 @@
 
         <div class="search-form">
          <input type="search" id="search-box" placeholder="Search">
-         <label for="search-box">              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+         <label for="search-box"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
          </i></label>
       </div>
       
@@ -62,17 +62,17 @@
         </div>
       </div>
     </template>
-    <h1 x-show="!$store.cart.items.length">Kosong wak</h1>
-    <h1 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h1>
+    <h1 class="wak" x-show="!$store.cart.items.length">Pesananmu Masih Kosong Nih</h1>
+    <h1 class="wak" x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h1>
     </div>
 
-<!-- LOGIN -->
+    <!-- LOGIN -->
     <div class="user-login hide" id="user-login">
       <div class="login">
         <span class="x"><img src="asset/x.svg" alt="" id="exit" ></span>
         <h1 style="text-align: center; padding:4rem 0rem;">Login</h1>
         <form action="" style="align-items: center;">
-          <label for="email">Email/Username</label><br>
+          <label for="email">Email/Username</labefl><br>
           <input type="text" id="email" name="email"><br>
           <label for="email">Password</label><br>
           <input type="password" id="Password" name="Password" ><br>
@@ -85,7 +85,20 @@
       </div>
     </div>
     <!-- LOGIN -->
-
+    
+    <!-- <article class="modul-buy hide">
+      <span class="x"><img src="asset/x.svg" alt="" id="exit2" ></span>
+      <img src="asset/Nian.jpg" alt="">
+      <div class="modul-detail">
+        <h1>Nian</h1>
+        <ul>
+          <li>Series : </li>
+          <li>Category :</li>
+          <li>Price</li>
+        </ul>
+        <a href="" class="cta"><span>Buy</span></a>
+      </div>
+    </article> -->
     </nav>
     <!-- nav end-->
 
@@ -97,8 +110,6 @@
         <p>A Paradise Only for YOU!</p>
         <a href="#af" class="cta"><span>Buy Now</span></a>
     </main>
-
-
 </section>
 <!-- hero end -->
 

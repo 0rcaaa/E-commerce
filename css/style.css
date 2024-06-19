@@ -235,7 +235,6 @@ body{
 .user-login .login{
   background-color: rgba(255, 255, 255, 0.3);
   width: 30rem;
-  height: 30rem;
   font-size: 15px;
   color: #010101;
   backdrop-filter: blur(10px);
@@ -271,12 +270,12 @@ body{
 
 .lupa{
   display:flex;
+  padding-bottom: 10%;
   justify-content:space-between;
-  margin:0 6rem;
 }
 
 .user-login .login a{
-  color: #ffff;
+  color: #010101;
   cursor: pointer;
   font-size: 14px;
 }
@@ -467,10 +466,13 @@ body{
 .seemore:hover{
   color:var(--primary)
 }
+.wak{
+  padding-top: 100%;
+  text-align:center;
+}
 .dasar{
   background-color:rgb(30, 50, 72);
   border-radius:8px;
-  box-shadow: -1px -1px 15px 3px #3c4a5f;
   width: 100%;
 }
 .dasar .ds1{
@@ -655,7 +657,7 @@ li a:hover{
   width: 54px;
 }
 .contact__payment ul {
- width: 56px;
+  width: 56px;
 /* background-color: #fff; */
 display: inline;
 justify-content: center;
@@ -674,16 +676,36 @@ align-items: center;
 }
 
 /* .copyright span{
- padding-top: 2rem;
+  padding-top: 2rem;
 } */
 
 /* queries */
 
+.modul-buy{
+  background-color: #3c4a5f;
+  top: 90%;
+  left: 30%;
+  width: 40rem;
+  position: absolute;
+  display: flex;
+  border-radius:5px;
+  list-style-type: none;
+}
+
+.modul-detail{
+  margin: 3rem;
+}
+.modul-buy img{
+  height: auto;
+  width: 50%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
 /* laptop */
 @media (max-width:1366px ){
     html {
         font-size: 75%;
-    }
+      }
     .card__container {
       max-width: 1120px;
     }
@@ -700,7 +722,10 @@ align-items: center;
       float: none;
       display: flex;
     }
+    .modul-buy{
+      left:33%;
 
+    }
     
   }
   
@@ -714,6 +739,10 @@ align-items: center;
       
       #hambuger-menu {
         display: inline-block;
+      }
+
+      .uset-login{
+        right: 27%;
       }
       
     .navbar .navbar-nav {
@@ -782,6 +811,9 @@ align-items: center;
         width: 400px;
         height: 227px;
       }
+      .modul-buy{
+       left: 10%;
+      }
 
     }
     
@@ -822,5 +854,17 @@ align-items: center;
       width: 300px;
       height: auto;
   }
+  .user-login .login form input
+  {width:100%}
+  .user-login .login form {
+    width:200px
+  }
+  .user-login{
+    left:8rem;
+  }
+  }
+@media(max-height:790px){
+  .modul-buy{
+    top:25rem;
   }
 }
